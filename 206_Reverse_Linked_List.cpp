@@ -13,17 +13,14 @@ class Solution
 	public:
 		ListNode* reverseList(ListNode* head)
 		{
-			if(head == NULL)
-				return head;
-
 			ListNode* prev = NULL;
-			ListNode* cur = head;
-			while(cur != NULL)
+			ListNode* next = NULL;
+			while(head != NULL)
 			{
-				ListNode* next = cur->next;
-				cur->next = prev;
-				prev = cur;
-				cur = next;
+				next = head->next;
+				head->next = prev;
+				prev = head;
+				head = next;
 			}
 			return prev;
 		}
