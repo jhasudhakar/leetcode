@@ -14,19 +14,24 @@ public:
   		ListNode* root = new ListNode(0, head);
   		int index = 0;
   		ListNode* cur = root;
-  		while(index < m && cur != NULL)
+
+  		while(index < m-1 && cur != NULL) // loop till parent of m-th node.
   		{
   			cur = cur->next;
   			index++;
   		}
+
   		if(cur == NULL) // m is invalid
+  		{	
+  				delete root;
   				return head;
+			}
 
   		ListNode* parent = cur;
-  		cur = cur->next; 
+  		cur = cur->next;
   		index++; // Equals m now.
   		ListNode* prev = NULL;
-  		while(index <= n && cur != NULL);
+  		while(index <= n && cur != NULL)
   		{
   			index++;
   			ListNode* next = cur->next;
