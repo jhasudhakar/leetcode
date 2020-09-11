@@ -13,16 +13,15 @@ class Solution
 	public:
 		ListNode* middleNode(ListNode* head)
 		{
-			if(head == NULL)
-					return NULL;
-
-			ListNode *ptr1 = head;
+			//ListNode *ptr1 = head;
 			ListNode *ptr2 = head;
 			while(ptr2 && ptr2->next)
 			{
-				ptr1 = ptr1->next;
+				//ptr1 = ptr1->next;
+				head = head->next;
 				ptr2 = ptr2->next->next;
 			}
-			return ptr1;
+			//return ptr1;
+			return head;
 		}
 };
