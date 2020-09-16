@@ -4,7 +4,7 @@ public:
     int numTrees(int n)
     {
     	int ret = 0;
-    	unsigned int* count = new unsigned int [n+1];
+    	unsigned int* count = new unsigned int [n+4];
     	for(unsigned int i=0; i<=n; i++)
     	{
     			count[i] = 0;
