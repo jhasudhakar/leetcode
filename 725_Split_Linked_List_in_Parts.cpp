@@ -19,7 +19,10 @@ public:
 		vector<ListNode*> ret_list;
 		if(root == NULL) 
 		{
-			ret_list.push_back(NULL);
+			for(unsigned int n = 0; n<k; n++)
+			{
+				ret_list.push_back(NULL);	
+			}
 			return ret_list;
 		}
 
@@ -55,7 +58,7 @@ public:
 			}
 			ret_list.push_back(new_start);
 		}
-		for(unsigned int n = ret_list.size(); n<= k; n++)
+		for(unsigned int n = ret_list.size(); n<k; n++)
 		{
 			ret_list.push_back(NULL);	
 		}
