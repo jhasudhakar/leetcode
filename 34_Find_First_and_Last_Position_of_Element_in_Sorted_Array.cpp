@@ -29,7 +29,8 @@ class Solution
 			return ret_vec;
 		}
 
-		start = 0, end = nums.size()-1;
+		//start = 0, end = nums.size()-1;
+		end = nums.size()-1;
 		while(start+1 < end)
 		{
 			int mid = (start+end)/2;
