@@ -50,12 +50,11 @@ public:
 			{
 				tmp = tmp->next;
 			}
-			if(tmp != NULL)
-			{
-				ListNode* next = tmp->next;
-				tmp->next = NULL;
-				tmp = next;
-			}
+
+			ListNode* next = tmp->next;
+			tmp->next = NULL;
+			tmp = next;
+
 			ret_list.push_back(new_start);
 		}
 		for(unsigned int n = ret_list.size(); n<k; n++)
