@@ -20,7 +20,7 @@ public:
 		ListNode* k1, *k2;
 		ListNode* ptr1=head, *ptr2=head;
 		int n = 1;
-		while(n<= k)
+		while(n < k)
 		{
 			ptr2 = ptr2->next;
 			n++;
