@@ -30,6 +30,7 @@ public:
 			cur->next = prev;
 			prev = cur;
 			cur = next;
+			n--;
 		}
 		//Once loop finishes, prev points to last reversed node.
 		prev_start->next->next = cur;

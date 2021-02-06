@@ -22,14 +22,15 @@ public:
 		ListNode* end = start;
 		while(start != NULL)
 		{
+			unsigned int dup = 0;
 			while(end != NULL && (start->val == end->val))
 			{
 				end = end->next;
+				dup++;
 			}
-			if(start->next != end) // Duplicates are there.
+			if(dup > 1) // Duplicates are there.
 			{
 				prev->next = end;
-				prev = end;
 			}
 			else
 			{
