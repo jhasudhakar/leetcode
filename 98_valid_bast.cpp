@@ -16,6 +16,7 @@ public:
 		} else {
 			if(cur_val >= root->val)
 				return false;
+			cur_val = root->val;
 		}
 		return isValidBST(root->right);
     }
