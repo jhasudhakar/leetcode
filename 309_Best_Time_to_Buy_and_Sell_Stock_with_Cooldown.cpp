@@ -36,8 +36,8 @@ public:
 			}
 		}
 		int ret_val =  max(max_p_0[prices.size()-1], max_p_1[prices.size()-1]);
-		delete max_p_0;
-		delete max_p_1;
+		delete []  max_p_0;
+		delete [] max_p_1;
 		return ret_val;
     }
 };
