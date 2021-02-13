@@ -10,17 +10,6 @@ public:
 
 		int* max_p_0 = new int[prices.size()];
 		int* max_p_1 = new int[prices.size()];
-		/*
-		for(int i=0; i<prices.size(); i++)
-		{
-			max_p_0[i] = 0;
-		}
-		
-		for(int i=0; i<prices.size(); i++)
-		{
-			max_p_1[i] = 0;
-		}
-		*/
 		max_p_0[0] = max_p_1[1] = 0;
 
 		for(int n=1; n<prices.size(); n++)
