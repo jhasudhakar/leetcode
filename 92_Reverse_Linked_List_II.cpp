@@ -8,45 +8,38 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
-public:
-    ListNode* reverseBetween(ListNode* head, int m, int n) {
-  		ListNode* root = new ListNode(0, head);
-  		int index = 0;
-  		ListNode* cur = root;
+class Solution
+{
+	public:
+	ListNode* reverseBetween(ListNode* head, int m, int n)
+	{
+		ListNode root(0, head);
 
-  		while(index < m-1 && cur != NULL) // loop till parent of m-th node.
-  		{
-  			cur = cur->next;
-  			index++;
-  		}
+		ListNode* cur = &root;
+		int pos = 0;
+		while(pos+1 != m)
+		{
+			cur = cur->next;	
+			pos++;
+		}
+		ListNode* parent1 = cur;
+		pos++;
+		cur = cur->next;
 
-  		if(cur == NULL) // m is invalid
-  		{	
-  				delete root;
-  				return head;
-			}
+		ListNode* new_end = cur;
+		ListNode* prev = NULL, *next = NULL;
+		while(pos <=n)
+		{
+			next = cur->next ;
+			cur->next = prev;
+			prev = cur;
+			cur = next;
+			pos++;
+		}
 
-  		ListNode* parent = cur;
-  		cur = cur->next;
-  		index++; // Equals m now.
-  		ListNode* prev = NULL;
-  		while(index <= n && cur != NULL)
-  		{
-  			index++;
-  			ListNode* next = cur->next;
-  			cur->next = prev;
-  			prev = cur;
-  			cur = next;
-  		}
-
-  		ListNode* new_end = parent->next;
-  		parent->next = prev;
-  		if(new_end)
-  			new_end->next = cur;
-
-  		head = root->next;
-  		delete root;
-  		return head;
-    }
+		parent1->next = prev;
+		new_end->next = cur;
+		return root.next;
+	}
 };
+
