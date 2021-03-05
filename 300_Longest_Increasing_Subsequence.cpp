@@ -14,6 +14,7 @@ class Solution
 		for(int i=0; i<=nums.size(); i++)
 			count[i] = 1;
 
+		int max_len = 1;
 		count[0] = 0;
 		for(int i=1; i<=nums.size(); i++)
 		{
@@ -23,11 +24,15 @@ class Solution
 					continue;
 
 				if(count[j] + 1 > count[i])
+				{
 					count[i] = 1+ count[j];
+					if(count[i] > max_len)
+						max_len = count[i];
+				}
+			
 			}
 		}
-		int ret_val = count[nums.size()];
 		delete [] count;
-		return ret_val;
+		return max_len;
 	}
 };
