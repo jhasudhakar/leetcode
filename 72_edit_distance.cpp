@@ -30,10 +30,10 @@ public:
 		{
 			for(int j=1; j<=N2; j++)
 			{
-				int tmp = val[i][j-1];
-				if(val[i-1][j] < tmp)
+				int tmp = 1+ val[i][j-1];
+				if(1+val[i-1][j] < tmp)
 				{
-					tmp = val[i-1][j];
+					tmp = 1+val[i-1][j];
 				}
 
 				int tmp2 = val[i-1][j-1];
@@ -41,6 +41,8 @@ public:
 					tmp2++;
 				if(tmp2 < tmp)
 					tmp = tmp2;
+
+				val[i][j] = tmp;
 			}
 		}
 		int ret_val = val[N1][N2];
