@@ -46,24 +46,71 @@ public:
 		}
 
 		int total_visit = 0;
-		bool* is_visited = new bool[points.size()];
+		int* group_id = new int[points.size()];
 		for(int i=0; i<points.size(); i++)
-			is_visited[i] = false;
+		{
+			group_id[i] = i;
+		}
 
 		while(total_visit < points.size() && min_pq.size())
 		{
 			edge cur_e = min_pq.top();
 			min_pq.pop();
-			if(is_visited[cur_e.p1] && is_visited[cur_e.p2])
+			if(group_id[cur_e.p1] == group_id[cur_e.p2])
 				continue;
 
-			is_visited[cur_e.p1] = true;
-			is_visited[cur_e.p2] = true;
-			min_sum += cur_e.get_weight();
-		}
-		delete [] is_visited;
-		return min_sum;			
+			cout <<"Edge between points " << cur_e.p1 <<" and " << cur_e.p2 << "\t";
+			cout <<"Group p1 = " << group_id[cur_e.p1] <<", Group p2 = " << group_id[cur_e.p2] << endl;
 
+			int min_group_id = min(group_id[cur_e.p1], group_id[cur_e.p2]);
+			int to_change = max(group_id[cur_e.p1], group_id[cur_e.p2]);
+			if(min_group_id == group_id[cur_e.p1])
+			{
+				for(int i=0; i<points.size(); i++)
+				{
+					if(group_id[i] == to_change)
+					{
+						cout << " Changing the group-id of " << i << " to " << min_group_id << endl;
+						group_id[i] = min_group_id;
+					}
+				}
+			}
+			else
+			{
+				for(int i=0; i<points.size(); i++)
+				{
+					if(group_id[i] == to_change)
+					{
+						cout << " Changing the group-id of " << i << " to " << min_group_id << endl;
+						group_id[i] = min_group_id;
+					}
+				}
+			}
+
+			min_sum += cur_e.get_weight();
+			total_visit++;
+		}
+		delete [] group_id;
+		return min_sum;			
 	}
 };
 
+int main()
+{
+	vector< vector<int> > points;
+	// [[2,-3],[-17,-8],[13,8],[-17,-15]]
+	vector<int> p1{2, -3};
+	vector<int> p2{-17, -8};
+	vector<int> p3{13, 8};
+	vector<int> p4{-17, -15};
+	points.push_back(p1);
+	points.push_back(p2);
+	points.push_back(p3);
+	points.push_back(p4);
+
+	Solution obj;
+	int cost = 	obj.minCostConnectPoints(points);
+	cout <<"Min cost = " << cost << endl;
+	return 0;
+
+}
