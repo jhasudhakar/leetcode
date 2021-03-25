@@ -21,7 +21,7 @@ public:
    	int key = nums[start];
     int i = start + 1;
     int j = end;
-    while (i < j)
+    while (i <= j)
     {
 		while (i <= end && nums[i] <= key)
 		  i++;
