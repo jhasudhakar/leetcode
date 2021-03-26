@@ -8,7 +8,7 @@ public:
 
   int binarySearch(vector < int >&nums, int start, int end, int target)
   {
-	while(start != end)
+	while(start < end)
 	{
 		int mid = (start+end)/2;
 		if(nums[mid] > target)
