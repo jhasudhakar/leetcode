@@ -1,4 +1,4 @@
-
+#include<iostream>
 #include <vector>
 using namespace std;
 
@@ -20,11 +20,11 @@ public:
 		int key = nums[start];
 		int i = start+1;
 		int j = end;
-		while(i<j)
+		while(i<=j)
 		{
-			while(nums[i] <= key && i <=end)
+			while(i<=end && nums[i] <= key)
 				i++;
-			while(nums[j] >= key && j>=start)
+			while(j>=start && nums[j] >= key)
 				j--;
 			if(i < j)
 			{
@@ -37,3 +37,20 @@ public:
 	}
 
 };
+
+int main()
+{
+	vector<int> arr;
+	arr.push_back(3);
+	arr.push_back(1);
+
+	Solution obj;
+	vector<int> ret = obj.sortArray(arr);
+	cout << "sorted output = ";
+	for(int i=0; i<ret.size(); i++)
+	{
+		cout << ret[i] <<" ";
+	}
+	cout << endl;
+	return 0;
+}

@@ -1,0 +1,46 @@
+
+#include <vector>
+using namespace std;
+
+class Solution
+{
+
+public:
+  int findKthLargest (vector < int >&nums, int k)
+    {
+      if (nums.size () == 1)
+	return nums[0];
+      int kth_smallest = nums.size () + 1 - k;
+        return quicksort (nums, 0, nums.size () - 1, kth_smallest);
+    }
+
+    int quicksort (vector < int >&nums, int start, int end, int k)
+    {
+      if (start == end)
+	return nums[start] int key = nums[start];
+      int i = start + 1;
+      int j = end;
+      while (i < j)
+	{
+	  while (i <= end && nums[i] <= key)
+	    i++;
+	  while (j >= start && nums[j] >= key)
+	    j--;
+	  if (i < j)
+	    {
+	      std::swap (nums[i], nums[j]);
+	    }
+	}
+      std::swap (nums[start], nums[i - 1]);
+      int left_size = 1 + i - 2 - start;
+      if (left_size < 0)
+	left_size = 0;
+      if (left_size > 0 && k <= left_size)
+	quicksort (nums, start, i - 2);
+      else if (k == 1 + i - 1 - start)
+	return nums[i - 1];
+      else
+	return quicksort (nums, i, end, k - left_size - 1);
+    }
+
+  };
