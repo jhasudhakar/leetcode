@@ -20,7 +20,7 @@ class Solution
 public:
   ListNode * reverseKGroup (ListNode * head, int k)
   {
-	if(head == NULL)
+	if(k == 1 || head == NULL)
 		return head;
 
 	int len = 0;
@@ -46,8 +46,8 @@ public:
 		{
 			nxt = cur->next;
 			cur->next = prev;
-			cur = nxt;
 			prev = cur;
+			cur = nxt;
 		}
 		
 		// Fix the start and end of k-reversed list.
@@ -56,7 +56,7 @@ public:
 		p_sublist->next = k_head;
 		k_tail->next = cur;
 		
-		p_sublist = k_head;
+		p_sublist = k_tail;
 		prev = NULL;
 		reverse_count--;
 	}
